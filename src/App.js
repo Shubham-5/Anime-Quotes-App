@@ -11,18 +11,30 @@ function App() {
   const [animeSearch, setAnimeSearch] = useState("");
 
   const getAnimeQuotes = async (animeSearch) => {
-    const response = await fetch(
-      `https://animechan.vercel.app/api/quotes/character?name=${animeSearch}`
-    );
-    const responseJson = await response.json();
-    console.log(responseJson);
+    let responseJson;
+    try {
+      const response = await fetch(
+        `https://animechan.vercel.app/api/quotes/character?name=${animeSearch}`
+      );
+
+      //because try catch does not handle server errors
+      if (response.status >= 400 && response.status < 600) {
+        throw new Error("Bad response from server");
+      }
+      responseJson = await response.json();     
+    } catch (ex) {
+        console.log("oops");
+        responseJson = [];
+    }
+
     if (animeSearch) {
       setAnimeData(responseJson);
     }
   };
 
   useEffect(() => {
-    getAnimeQuotes(animeSearch);
+    //avoid calling getAnimeQuotes for blanks 
+    animeSearch && getAnimeQuotes(animeSearch);
   }, [animeSearch]);
 
   return (
