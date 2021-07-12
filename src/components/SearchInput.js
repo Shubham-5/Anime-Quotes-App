@@ -1,15 +1,34 @@
 import React from "react";
 
-export const SearchInput = ({ setAnimeSearch, animeSearch }) => {
+const SearchInput = ({
+  setAnimeSearch,
+  animeSearch,
+  formSubmitHandler,
+  setValue,
+}) => {
+  // const quotesFilterHandler = (e) => {
+  //   setValue(e.target.value);
+  // };
   return (
     <>
-      <input
-        className=' form-control-md m-2 text-center p-2 shadow '
-        type='text'
-        onChange={(e) => setAnimeSearch(e.target.value)}
-        value={animeSearch}
-        placeholder='Search any character..'
-      />
+      <form onSubmit={formSubmitHandler}>
+        <input
+          className=' form-control-sm   m-2 p-2   '
+          type='text'
+          onChange={(e) => setAnimeSearch(e.target.value)}
+          value={animeSearch}
+          placeholder='Search...'
+        />
+      </form>
+      <form onSubmit={formSubmitHandler}>
+        <select
+          onChange={(e) => setValue(e.target.value)}
+          name='anime'
+          className='custom-select custom-select-sm my-1 mr-sm-1'>
+          <option value='Title '>Title</option>
+          <option value='Character'>Character</option>
+        </select>
+      </form>
     </>
   );
 };

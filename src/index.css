@@ -5,10 +5,6 @@
     font-family: "Poppins", sans-serif;
 }
 
-.overflow {
-    overflow: hidden;
-}
-
 header h1 {
     font-size: 25px;
 }
@@ -18,4 +14,8 @@ body {
     font-family: "Poppins", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.form-control-sm {
+    width: 200px;
 }

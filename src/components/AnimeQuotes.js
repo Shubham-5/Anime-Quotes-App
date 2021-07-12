@@ -1,25 +1,14 @@
 import React from "react";
+import Quote from "./Quote";
 
-export const AnimeQuotes = ({ animeData }) => {
-  const itachi = animeData.map((datas) => (
-    <>
-      <div className=' card mb-3'>
-        <div class='card-header'>Anime : {datas.anime}</div>
-        <div class='card-body'>
-          <blockquote class='blockquote mb-0'>
-            <p>{datas.quote}</p>
-            <footer class='blockquote-footer'>
-              <cite title='Source Title'>{datas.character}</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </>
-  ));
-
+const AnimeQuotes = ({ animeData }) => {
   return (
     <>
-      <div>{itachi}</div>
+      {animeData.map((anim) => (
+        <div className='container text-center '>
+          <Quote key={anim.name} {...anim} />
+        </div>
+      ))}
     </>
   );
 };
