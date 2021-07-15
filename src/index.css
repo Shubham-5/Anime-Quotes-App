@@ -16,6 +16,13 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 373px;
+}
+
 .form-control-sm {
     width: 200px;
 }
