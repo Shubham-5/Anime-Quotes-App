@@ -105,7 +105,7 @@ function App() {
               className='loader'
               type='ThreeDots'
               color='white'
-              height={100}
+              height={50}
               width={50}
             />
           ) : (

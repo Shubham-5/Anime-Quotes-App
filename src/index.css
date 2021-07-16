@@ -20,7 +20,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-bottom: 373px;
+    padding-bottom: 80vh;
 }
 
 .form-control-sm {
