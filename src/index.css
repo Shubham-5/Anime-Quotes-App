@@ -26,3 +26,13 @@ body {
 .form-control-sm {
     width: 200px;
 }
+
+svg {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+svg:hover {
+    opacity: 1;
+    cursor: pointer;
+}

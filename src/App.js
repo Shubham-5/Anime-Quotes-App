@@ -10,58 +10,6 @@ function App() {
   const [value, setValue] = useState("Title");
   const [loading, setLoading] = useState(true);
 
-  const getAnimeQuotes = (value, animeSearch) => {
-    // calling by title
-    if (value === "Title") {
-      fetch(
-        `https://animechan.vercel.app/api/quotes/anime?title=${animeSearch}`
-      )
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error("Something went wrong");
-          }
-        })
-        .then((responseJson) => {
-          setAnimeData(responseJson);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-
-    // calling by Character
-    if (value === "Character") {
-      fetch(
-        `https://animechan.vercel.app/api/quotes/character?name=${animeSearch}`
-      )
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error("Something went wrong");
-          }
-        })
-        .then((responseJson) => {
-          setAnimeData(responseJson);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  };
-
-  const formSubmitHandler = (e) => {
-    e.preventDefault();
-
-    getAnimeQuotes(animeSearch);
-  };
-
-  useEffect(() => {
-    value && getAnimeQuotes(value, animeSearch);
-  }, [value, animeSearch]);
-
   useEffect(() => {
     const getRandomQuotes = () => {
       fetch("https://animechan.vercel.app/api/quotes")
@@ -86,7 +34,7 @@ function App() {
   return (
     <>
       <div className='bg-dark App'>
-        <header className=' text-center p-2 text-white'>
+        <header className=' text-center p-1 text-white'>
           <h1>Anime Quotes</h1>
         </header>
 
@@ -94,12 +42,11 @@ function App() {
           <SearchInput
             animeSearch={animeSearch}
             setAnimeSearch={setAnimeSearch}
-            formSubmitHandler={formSubmitHandler}
             setValue={setValue}
           />
         </div>
 
-        <div className=''>
+        <div>
           {loading ? (
             <Loader
               className='loader'
@@ -109,9 +56,19 @@ function App() {
               width={50}
             />
           ) : (
-            <AnimeQuotes animeData={animeData} />
+            <AnimeQuotes
+              value={value}
+              setAnimeData={setAnimeData}
+              animeSearch={animeSearch}
+              animeData={animeData}
+            />
           )}
         </div>
+        <footer className='footer shadow mt-auto py-2 bg-light mr-3 ml-3'>
+          <div className='container text-center'>
+            <span className='text-muted'>Created By ❤ Shubham Rajput</span>
+          </div>
+        </footer>
       </div>
     </>
   );

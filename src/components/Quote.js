@@ -11,12 +11,15 @@ const Quote = ({ quote, anime, character }) => {
 
     document.execCommand("copy");
     document.body.removeChild(el);
-    setCopied(!false);
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 3000);
   };
 
   return (
     <>
-      <div className=' card mb-3'>
+      <div className=' shadow card mb-3'>
         <div class='card-header p-2'>{anime}</div>
         <div class='card-body'>
           <blockquote class='blockquote mb-0'>
