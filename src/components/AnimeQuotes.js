@@ -53,7 +53,7 @@ const AnimeQuotes = ({ animeData, value, animeSearch, setAnimeData }) => {
   return (
     <>
       {animeData.map((anim) => (
-        <div key={anim.name} className='container text-center '>
+        <div className='container'>
           <Quote {...anim} />
         </div>
       ))}
