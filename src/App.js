@@ -34,7 +34,7 @@ function App() {
   return (
     <>
       <div className='bg-dark App'>
-        <header className=' text-center p-1 text-white'>
+        <header className=' text-center p-3 text-white'>
           <h1>Anime Quotes</h1>
         </header>
 

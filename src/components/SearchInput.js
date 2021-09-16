@@ -3,11 +3,16 @@ import React from "react";
 const SearchInput = ({ setAnimeSearch, animeSearch, setValue }) => {
   return (
     <>
-      <form>
+      <form
+        onSubmit={function (e) {
+          e.preventDefault();
+        }}>
         <input
           className=' form-control-sm   m-1 p-2   '
           type='text'
-          onChange={(e) => setAnimeSearch(e.target.value)}
+          onChange={(e) => {
+            setAnimeSearch(e.target.value);
+          }}
           value={animeSearch}
           placeholder='Search...'
         />
